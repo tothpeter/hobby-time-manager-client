@@ -36,6 +36,7 @@
     "ember-cli-uglify": "^2.0.0",
     "ember-data": "~2.18.0",
     "ember-export-application-global": "^2.0.0",
+    "ember-legit-forms": "^2.2.0",
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-simple-auth": "^1.5.1",
