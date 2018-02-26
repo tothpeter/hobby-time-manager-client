@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: :me
+  before_action :authenticate_user!, except: :create
+  before_action :set_user, only: [ :show, :update, :destroy ]
+
+  def me
+    render json: current_user
+  end
 
   def create
     @user = User.new(user_params)
@@ -12,8 +17,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def me
-    render json: current_user
+  def update
+    if @user.update(user_params_for_update)
+      render json: @user
+    else
+      respond_with_errors @user
+    end
   end
 
   private
@@ -23,5 +32,9 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:data).require(:attributes).permit(:email, :password, :username, :first_name, :last_name)
+    end
+
+    def user_params_for_update
+      params.require(:data).require(:attributes).permit(:username, :first_name, :last_name)
     end
 end

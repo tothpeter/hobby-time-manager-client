@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'users/me'
+  resources :users do
+    get :me, on: :collection
+  end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
