@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: :me
+
   def create
     @user = User.new(user_params)
 
@@ -8,6 +10,10 @@ class UsersController < ApplicationController
     else
       respond_with_errors @user
     end
+  end
+
+  def me
+    render json: current_user
   end
 
   private
