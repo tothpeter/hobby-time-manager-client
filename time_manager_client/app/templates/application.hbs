@@ -13,6 +13,7 @@
 
     <ul class="nav navbar-nav navbar-right">
       {{#if session.isAuthenticated}}
+        <li>{{#link-to 'me'}}Profil{{/link-to}}</li>
         <li>
           <div class="navbar-form">
             <button class="btn btn-default" {{action "logout"}}>Logout</button>

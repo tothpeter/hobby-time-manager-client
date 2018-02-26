@@ -1,0 +1,87 @@
+<h2>Edit user</h2>
+
+<div style="padding-bottom: 10px;"><strong>E-mail:</strong> {{model.email}}</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Basic profile info</h3>
+  </div>
+  <div class="panel-body">
+    {{#lf-form rules=basicProfileRules onSubmit=(action 'updateProfile') as |validateFunc isValid|}}
+      <div class="row">
+        <div class="col-lg-4">
+          {{lf-input
+            name="username"
+            label="Username"
+            property=model.username
+            on-update=(action (mut model.username))
+            validate=validateFunc
+            errors=externalErrors.username
+          }}
+        </div>
+
+        <div class="col-lg-4">
+          {{lf-input
+            name="firstName"
+            label="First Name"
+            property=model.firstName
+            on-update=(action (mut model.firstName))
+            validate=validateFunc
+            errors=externalErrors.firstName
+          }}
+        </div>
+
+        <div class="col-lg-4">
+          {{lf-input
+            name="lastName"
+            label="Last Name"
+            property=model.lastName
+            on-update=(action (mut model.lastName))
+            validate=validateFunc
+            errors=externalErrors.lastName
+          }}
+        </div>
+      </div>
+
+      <button class="btn btn-primary" disabled={{not isValid}}>Update profile</button>
+      <button class="btn btn-default" {{action 'cancel'}}>Cancel</button>
+    {{/lf-form}}
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Change password</h3>
+  </div>
+  <div class="panel-body">
+    {{#lf-form rules=passwordRules as |validateFunc isValid|}}
+      <div class="row">
+        <div class="col-lg-6">
+          {{lf-input
+            name="password"
+            label="Password"
+            type="password"
+            property=password
+            on-update=(action (mut password))
+            validate=validateFunc
+          }}
+        </div>
+
+        <div class="col-lg-6">
+          {{lf-input
+            name="passwordConfirmation"
+            label="Password confirmation"
+            type="password"
+            property=passwordConfirmation
+            on-update=(action (mut passwordConfirmation))
+            validate=validateFunc
+          }}
+        </div>
+      </div>
+
+      <button class="btn btn-primary" disabled={{not isValid}}>Change password</button>
+      <button class="btn btn-default" {{action 'cancelPassword'}}>Cancel</button>
+    {{/lf-form}}
+  </div>
+</div>
