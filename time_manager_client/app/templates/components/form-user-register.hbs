@@ -7,7 +7,7 @@
     property=model.email
     on-update=(action (mut model.email))
     validate=validateFunc
-    errors=model.errors.email
+    errors=externalErrors.email
   }}
 
   {{lf-input
@@ -17,7 +17,7 @@
     property=model.password
     on-update=(action (mut model.password))
     validate=validateFunc
-    errors=model.errors.password
+    errors=externalErrors.password
   }}
 
   {{lf-input
@@ -26,7 +26,7 @@
     property=model.username
     on-update=(action (mut model.username))
     validate=validateFunc
-    errors=model.errors.username
+    errors=externalErrors.username
   }}
 
   {{lf-input
@@ -35,7 +35,7 @@
     property=model.firstName
     on-update=(action (mut model.firstName))
     validate=validateFunc
-    errors=model.errors.firstName
+    errors=externalErrors.firstName
   }}
 
   {{lf-input
@@ -44,7 +44,7 @@
     property=model.lastName
     on-update=(action (mut model.lastName))
     validate=validateFunc
-    errors=model.errors.lastName
+    errors=externalErrors.lastName
   }}
 
   <button class="btn btn-primary" disabled={{not isValid}}>Sign up</button>
