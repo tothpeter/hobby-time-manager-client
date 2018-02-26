@@ -16,10 +16,11 @@ export default Component.extend({
 
   rules: {
     sharedValidations: {
-      required: w('email password username')
+      required: w('email password passwordConfirmation username')
     },
 
     email: 'email',
-    password: 'min(6)'
+    password: 'min(6)',
+    passwordConfirmation: 'same(password)'
   }
 });
