@@ -1,58 +1,76 @@
 <h2>Register a new account</h2>
 
 {{#lf-form rules=rules as |validateFunc isValid|}}
-  {{lf-input
-    name="email"
-    label="Email"
-    property=model.email
-    on-update=(action (mut model.email))
-    validate=validateFunc
-    errors=externalErrors.email
-  }}
+  <div class="row">
+    <div class="col-lg-6">
+      {{lf-input
+        name="email"
+        label="Email"
+        property=model.email
+        on-update=(action (mut model.email))
+        validate=validateFunc
+        errors=externalErrors.email
+      }}
+    </div>
 
-  {{lf-input
-    name="password"
-    label="Password"
-    type="password"
-    property=model.password
-    on-update=(action (mut model.password))
-    validate=validateFunc
-    errors=externalErrors.password
-  }}
+    <div class="col-lg-6">
+      {{lf-input
+        name="username"
+        label="Username"
+        property=model.username
+        on-update=(action (mut model.username))
+        validate=validateFunc
+        errors=externalErrors.username
+      }}
+    </div>
+  </div>
 
-  {{lf-input
-    name="passwordConfirmation"
-    label="Password confirmation"
-    type="password"
-    validate=validateFunc
-  }}
+  <div class="row">
+    <div class="col-lg-6">
+      {{lf-input
+        name="firstName"
+        label="First Name"
+        property=model.firstName
+        on-update=(action (mut model.firstName))
+        validate=validateFunc
+        errors=externalErrors.firstName
+      }}
+    </div>
 
-  {{lf-input
-    name="username"
-    label="Username"
-    property=model.username
-    on-update=(action (mut model.username))
-    validate=validateFunc
-    errors=externalErrors.username
-  }}
+    <div class="col-lg-6">
+      {{lf-input
+        name="lastName"
+        label="Last Name"
+        property=model.lastName
+        on-update=(action (mut model.lastName))
+        validate=validateFunc
+        errors=externalErrors.lastName
+      }}
+    </div>
+  </div>
 
-  {{lf-input
-    name="firstName"
-    label="First Name"
-    property=model.firstName
-    on-update=(action (mut model.firstName))
-    validate=validateFunc
-    errors=externalErrors.firstName
-  }}
+  <div class="row">
+    <div class="col-lg-6">
+      {{lf-input
+        name="password"
+        label="Password"
+        type="password"
+        property=model.password
+        on-update=(action (mut model.password))
+        validate=validateFunc
+        errors=externalErrors.password
+      }}
+    </div>
 
-  {{lf-input
-    name="lastName"
-    label="Last Name"
-    property=model.lastName
-    on-update=(action (mut model.lastName))
-    validate=validateFunc
-    errors=externalErrors.lastName
-  }}
+    <div class="col-lg-6">
+      {{lf-input
+        name="passwordConfirmation"
+        label="Password confirmation"
+        type="password"
+        validate=validateFunc
+      }}
+    </div>
+  </div>
 
-  <button class="btn btn-primary" disabled={{not isValid}}>Sign up</button>
+  <button class="btn btn-primary" disabled={{not isValid}}>{{submitButtonLabel}}</button>
 {{/lf-form}}

@@ -3,6 +3,8 @@ import { w } from '@ember/string';
 import { computed } from '@ember/object';
 
 export default Component.extend({
+  submitButtonLabel: 'Sign up',
+
   externalErrors: computed('model.errors.[]', function() {
     let clone = {}
 
