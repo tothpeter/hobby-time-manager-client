@@ -13,9 +13,7 @@ export default Controller.extend({
         .then(() => {
           let { email, password } = controller.model.getProperties('email', 'password');
 
-          controller.get('session').authenticate('authenticator:devise', email, password).then(function() {
-            controller.transitionToRoute('application');
-          });
+          controller.get('session').authenticate('authenticator:devise', email, password);
         });
     }
   }

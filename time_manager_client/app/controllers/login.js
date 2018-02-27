@@ -10,13 +10,11 @@ export default Controller.extend({
 
       if (!identification || !password) { return false; }
 
-      let _this = this;
-
-      this.get('session').authenticate('authenticator:devise', identification, password).then(function() {
-        _this.transitionToRoute('application');
-      }, function(response) {
-        alert(response.error);
-      });
+      this.get('session')
+        .authenticate('authenticator:devise', identification, password)
+        .catch((response) => {
+          alert(response.error);
+        });
     }
   }
 });
