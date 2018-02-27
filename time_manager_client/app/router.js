@@ -10,8 +10,9 @@ Router.map(function() {
   this.route('login');
   this.route('register');
   this.route('me');
-  this.route('users');
 
+  this.route('users');
+  this.route('users.new', { path: 'users/new' });
   this.route('users.user.edit', { path: 'users/:user_id/edit' });
 });
 
