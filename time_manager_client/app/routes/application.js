@@ -6,6 +6,7 @@ export default Route.extend(ApplicationRouteMixin, {
   currentUser: service(),
 
   beforeModel() {
+    this._setDefaults();
     return this._loadCurrentUser();
   },
 
@@ -16,5 +17,10 @@ export default Route.extend(ApplicationRouteMixin, {
 
   _loadCurrentUser() {
     return this.get('currentUser').load().catch(() => this.get('session').invalidate());
+  },
+
+  _setDefaults() {
+    this.get('notifications').setDefaultClearDuration(3600);
+    this.get('notifications').setDefaultAutoClear(true);
   }
 });
