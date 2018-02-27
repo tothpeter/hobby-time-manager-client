@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :me do
+    resources :tasks, only: :index
+  end
+
   resources :users do
     get :me, on: :collection
     patch :password, on: :member
