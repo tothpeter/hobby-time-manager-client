@@ -6,14 +6,12 @@ export default Controller.extend({
 
   actions: {
     register() {
-      let controller = this;
-
       this.get('model')
         .save()
         .then(() => {
-          let { email, password } = controller.model.getProperties('email', 'password');
+          let { email, password } = this.model.getProperties('email', 'password');
 
-          controller.get('session').authenticate('authenticator:devise', email, password);
+          this.get('session').authenticate('authenticator:devise', email, password);
         });
     }
   }
