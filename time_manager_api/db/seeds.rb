@@ -17,7 +17,7 @@ Task.destroy_all
     title: "Test task##{i} yesterday",
     description: "Description of test task##{i}",
     date: (Date.yesterday),
-    duration: 10 # minutes
+    duration: 1 # minutes
   }
 
   Task.create task_params
@@ -41,7 +41,7 @@ end
     user: user,
     title: "Test task##{i} tomorrow",
     description: "Description of test task##{i}",
-    date: (Date.tomorrow),
+    date: (Date.today + 1),
     duration: 10 # minutes
   }
 
