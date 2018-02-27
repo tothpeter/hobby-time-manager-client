@@ -4,4 +4,5 @@ class User < ApplicationRecord
          :confirmable, :token_authenticatable
 
   has_many :authentication_tokens, dependent: :delete_all
+  has_many :tasks, dependent: :delete_all
 end
