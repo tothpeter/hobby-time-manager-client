@@ -13,7 +13,7 @@
         <div class="col-lg-4">
           {{lf-input
             name="username"
-            label="Username"
+            label="*Username"
             property=model.username
             on-update=(action (mut model.username))
             validate=validateFunc
@@ -60,7 +60,7 @@
         <div class="col-lg-6">
           {{lf-input
             name="password"
-            label="Password"
+            label="*Password"
             type="password"
             property=password
             on-update=(action (mut password))
@@ -71,7 +71,7 @@
         <div class="col-lg-6">
           {{lf-input
             name="passwordConfirmation"
-            label="Password confirmation"
+            label="*Password confirmation"
             type="password"
             property=passwordConfirmation
             on-update=(action (mut passwordConfirmation))

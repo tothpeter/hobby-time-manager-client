@@ -5,7 +5,7 @@
     <div class="col-lg-6">
       {{lf-input
         name="email"
-        label="Email"
+        label="*Email"
         property=model.email
         on-update=(action (mut model.email))
         validate=validateFunc
@@ -16,7 +16,7 @@
     <div class="col-lg-6">
       {{lf-input
         name="username"
-        label="Username"
+        label="*Username"
         property=model.username
         on-update=(action (mut model.username))
         validate=validateFunc
@@ -53,7 +53,7 @@
     <div class="col-lg-6">
       {{lf-input
         name="password"
-        label="Password"
+        label="*Password"
         type="password"
         property=model.password
         on-update=(action (mut model.password))
@@ -65,7 +65,7 @@
     <div class="col-lg-6">
       {{lf-input
         name="passwordConfirmation"
-        label="Password confirmation"
+        label="*Password confirmation"
         type="password"
         validate=validateFunc
       }}

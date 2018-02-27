@@ -12,8 +12,11 @@ export default Controller.extend({
 
       this.get('session')
         .authenticate('authenticator:devise', identification, password)
+        .then(() => {
+          this.get('notifications').success('Logged in');
+        })
         .catch((response) => {
-          alert(response.error);
+          this.get('notifications').error(response.error);
         });
     }
   }

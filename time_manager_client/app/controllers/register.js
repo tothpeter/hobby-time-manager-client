@@ -11,7 +11,9 @@ export default Controller.extend({
         .then(() => {
           let { email, password } = this.model.getProperties('email', 'password');
 
-          this.get('session').authenticate('authenticator:devise', email, password);
+          this.get('session').authenticate('authenticator:devise', email, password).then(() => {
+            this.get('notifications').success('Successful sign up!');
+          });
         });
     }
   }
