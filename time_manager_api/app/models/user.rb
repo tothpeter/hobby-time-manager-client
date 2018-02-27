@@ -5,4 +5,6 @@ class User < ApplicationRecord
 
   has_many :authentication_tokens, dependent: :delete_all
   has_many :tasks, dependent: :delete_all
+
+  validates_presence_of :username
 end
