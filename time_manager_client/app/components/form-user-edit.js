@@ -6,9 +6,7 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   notifications: service('notification-messages'),
-
-  password: null,
-  passwordConfirmation: null,
+  ajax: service(),
 
   externalErrors: computed('model.errors.[]', function() {
     let clone = {}
@@ -46,8 +44,21 @@ export default Component.extend({
       this.model.rollbackAttributes();
     },
 
-    cancelPassword(){
-      this.setProperties({ password: null, passwordConfirmation: null })
+    changePassword() {
+      let payload = {
+        data: {
+          password: this.get('password')
+        }
+      };
+
+      this.get('ajax').patch(`/users/${this.model.id}/password`, payload).then(() => {
+        this.setProperties({ password: null, passwordConfirmation: null });
+        this.get('notifications').success('Password updated successfully!');
+      });
+    },
+
+    cancelPassword() {
+      this.setProperties({ password: null, passwordConfirmation: null });
     }
   }
 });

@@ -55,7 +55,7 @@
     <h3 class="panel-title">Change password</h3>
   </div>
   <div class="panel-body">
-    {{#lf-form rules=passwordRules as |validateFunc isValid|}}
+    {{#lf-form rules=passwordRules onSubmit=(action 'changePassword') as |validateFunc isValid|}}
       <div class="row">
         <div class="col-lg-6">
           {{lf-input

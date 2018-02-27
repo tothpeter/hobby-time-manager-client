@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: :create
-  before_action :set_user, only: [ :show, :update, :destroy ]
+  before_action :set_user, only: [ :show, :update, :destroy, :password ]
 
   def me
     render json: current_user
@@ -25,6 +25,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def password
+    if @user.update(password_params)
+      head 204
+    else
+      respond_with_errors @user
+    end
+  end
+
   private
     def set_user
       @user = User.find(params[:id])
@@ -36,5 +44,9 @@ class UsersController < ApplicationController
 
     def user_params_for_update
       params.require(:data).require(:attributes).permit(:username, :first_name, :last_name)
+    end
+
+    def password_params
+      params.permit(:password)
     end
 end
