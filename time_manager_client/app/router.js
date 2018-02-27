@@ -11,6 +11,8 @@ Router.map(function() {
   this.route('register');
   this.route('me');
   this.route('users');
+
+  this.route('users.user.edit', { path: 'users/:user_id/edit' });
 });
 
 export default Router;
