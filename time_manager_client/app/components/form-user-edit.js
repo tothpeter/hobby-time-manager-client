@@ -1,8 +1,12 @@
 import Component from '@ember/component';
 import { w } from '@ember/string';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+
 
 export default Component.extend({
+  notifications: service('notification-messages'),
+
   password: null,
   passwordConfirmation: null,
 
@@ -33,7 +37,9 @@ export default Component.extend({
 
   actions: {
     updateProfile() {
-      this.model.save();
+      this.model.save().then(() => {
+        this.get('notifications').success('Updated successfully!');
+      });
     },
 
     cancel(){
