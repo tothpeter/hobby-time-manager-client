@@ -9,7 +9,9 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('login');
   this.route('register');
+
   this.route('me');
+  this.route('me.tasks', { path: 'me/tasks' });
 
   this.route('users');
   this.route('users.new', { path: 'users/new' });
