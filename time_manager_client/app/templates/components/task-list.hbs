@@ -1,6 +1,6 @@
-{{#each groupedTasks as |group|}}
+{{#each groups as |group|}}
   <div class="{{if group.underPreferredWorkingHours 'under-preferred-working-hours'}}">
-    <h3>{{moment-format group.date}}</h3>
+    <h3>{{moment-format group.date}} - total: {{group.totalDuration}}</h3>
     <ul>
       {{#each group.tasks as |task|}}
         <li>{{task.title}}</li>
