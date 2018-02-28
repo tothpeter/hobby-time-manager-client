@@ -24,6 +24,10 @@ module.exports = function(environment) {
 
     'ember-cli-notifications': {
       icons: 'bootstrap'
+    },
+
+    moment: {
+      outputFormat: 'YYYY-MM-DD'
     }
   };
 
