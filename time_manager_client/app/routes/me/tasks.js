@@ -19,5 +19,13 @@ export default Route.extend(AuthenticatedRouteMixin, {
     }
 
     return this.get('store').query('task', query);
+  },
+
+  resetController: function(controller, isExiting) {
+    this._super.apply(this, arguments);
+
+    if (isExiting) {
+      controller._setDefaultDates();
+    }
   }
 });
