@@ -2,4 +2,6 @@ class Task < ApplicationRecord
   belongs_to :user
 
   validates_presence_of :user, :title, :duration
+
+  scope :between_dates, lambda { |start_date, end_date| where("date BETWEEN ? AND ?", start_date, end_date) }
 end

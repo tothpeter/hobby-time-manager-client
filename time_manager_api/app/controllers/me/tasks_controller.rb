@@ -2,6 +2,15 @@ class Me::TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: current_user.tasks.order(:date)
+    if !params[:start_date] || !params[:end_date]
+      return render json: { errors: ['start_date or end_date is missing'] }, status: 422
+    end
+
+    tasks = current_user
+      .tasks
+      .between_dates(params[:start_date], params[:end_date])
+      .order(:date)
+
+    render json: tasks
   end
 end
