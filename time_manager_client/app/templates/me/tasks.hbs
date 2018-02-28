@@ -1,3 +1,4 @@
+From
 {{#power-datepicker selected=startDate onSelect=(action 'changeStartDate' value="date") as |dp|}}
   {{#dp.trigger tabindex="-1"}}
     <input type="text" class="my-input-class" readonly value={{moment-format startDate}}>
@@ -9,7 +10,8 @@
   {{/dp.content}}
 {{/power-datepicker}}
 
- {{#power-datepicker selected=endDate onSelect=(action 'changeEndDate' value="date") as |dp|}}
+To
+{{#power-datepicker selected=endDate onSelect=(action 'changeEndDate' value="date") as |dp|}}
   {{#dp.trigger tabindex="-1"}}
     <input type="text" class="my-input-class" readonly value={{moment-format endDate}}>
   {{/dp.trigger}}
