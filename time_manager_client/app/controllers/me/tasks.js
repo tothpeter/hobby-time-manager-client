@@ -6,8 +6,10 @@ export default Controller.extend({
     endDate: 'end_date',
   },
 
-  startDate: moment().startOf('month').format('YYYY-MM-DD'),
-  endDate: moment().endOf('month').format('YYYY-MM-DD'),
+  init() {
+    this._super();
+    this._setDefaultDates();
+  },
 
   actions: {
     changeStartDate(selectedDate) {
@@ -16,6 +18,20 @@ export default Controller.extend({
 
     changeEndDate(selectedDate) {
       this.set('endDate', moment(selectedDate).format('YYYY-MM-DD'));
+    },
+
+    filterForCurrentWeek() {
+      this.set('startDate', moment().startOf('week').format('YYYY-MM-DD'));
+      this.set('endDate', moment().endOf('week').format('YYYY-MM-DD'));
+    },
+
+    filterForCurrentMonth() {
+      this._setDefaultDates();
     }
+  },
+
+  _setDefaultDates() {
+    this.set('startDate', moment().startOf('month').format('YYYY-MM-DD'));
+    this.set('endDate', moment().endOf('month').format('YYYY-MM-DD'));
   }
 });
