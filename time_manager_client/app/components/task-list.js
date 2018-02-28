@@ -5,8 +5,7 @@ export default Component.extend({
   classNames: ['task-list'],
   preferredWorkingHoursPerDay: 40,
 
-  groupedTasks: computed('model.[]', function() {
-
+  groupedTasks: computed('tasks', function() {
     let result = [],
         currentIndex = -1,
         currentDate = null;
