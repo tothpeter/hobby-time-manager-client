@@ -1,3 +1,8 @@
 @import "ember-bootstrap/bootstrap";
 @import "ember-power-datepicker";
+
+.datepicker-small {
+  @include ember-power-calendar($cell-size: 30px);
+}
+
 @import "task-list";
