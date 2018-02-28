@@ -1,10 +1,18 @@
 import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 
 export default Controller.extend({
   queryParams: {
-    startDate: 'start_date',
-    endDate: 'end_date',
+    dateRange: 'date_range',
   },
+
+  startDate: computed('dateRange', function() {
+    return this.get('dateRange').split('|')[0];
+  }),
+
+  endDate: computed('dateRange', function() {
+    return this.get('dateRange').split('|')[1];
+  }),
 
   init() {
     this._super();
@@ -14,14 +22,15 @@ export default Controller.extend({
   dateLimit: moment.duration(3, 'months'),
 
   actions: {
-    setDateRange(newStartDate, newEndDate) {
-      this.set('startDate', newStartDate);
-      this.set('endDate', newEndDate);
+    setDateRange(startDate, endDate) {
+      this.set('dateRange', `${startDate}|${endDate}`);
     }
   },
 
   _setDefaultDates() {
-    this.set('startDate', moment().startOf('month').format('YYYY-MM-DD'));
-    this.set('endDate', moment().endOf('month').format('YYYY-MM-DD'));
+    let startDate = moment().startOf('month').format('YYYY-MM-DD'),
+        endDate   = moment().endOf('month').format('YYYY-MM-DD');
+
+    this.set('dateRange', `${startDate}|${endDate}`);
   }
 });
