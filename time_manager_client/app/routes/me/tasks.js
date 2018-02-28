@@ -3,10 +3,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   queryParams: {
-    dateStart: {
+    startDate: {
       refreshModel: true
     },
-    dateEnd: {
+    endDate: {
       refreshModel: true
     }
   },
@@ -14,8 +14,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
   model(params) {
     let query = {
       own: true,
-      start_date: params.dateStart,
-      end_date: params.dateEnd
+      start_date: params.startDate,
+      end_date: params.endDate
     }
 
     return this.get('store').query('task', query);
