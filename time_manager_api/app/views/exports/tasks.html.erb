@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Tasks export <%= date_range %></title>
+    <style media="screen">
+      .under-expected-working-time li {
+        color: red;
+      }
+    </style>
   </head>
   <body>
     <h1><%= date_range %></h1>
@@ -10,7 +15,7 @@
     <% groups.each do |group| %>
       <h3><%= group.date %> - <%= group.total_time %></h3>
 
-      <ul>
+      <ul class="<%= group.under_expected_working_time ? 'under-expected-working-time':''  %>">
         <% group.tasks.each do |task| %>
           <li><%= task.description %></li>
         <% end %>

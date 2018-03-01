@@ -22,7 +22,8 @@ class Me::TasksController < ApplicationController
 
     date_range = "#{params[:start_date]} - #{params[:end_date]}"
 
-    content = ExportService::Task.export tasks, date_range
+    # TODO: Use real expected_working_time
+    content = ExportService::Task.export tasks, date_range, 40
 
     render html: content.html_safe
   end
