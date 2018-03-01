@@ -1,0 +1,15 @@
+<div class="form-group">
+  <select onchange={{action (mut selectedHour) value="target.value"}}>
+    {{#each hours as |hourChoiche|}}
+      <option value={{hour}} selected={{eq selectedHour hourChoiche}}>{{hourChoiche}}</option>
+    {{/each}}
+  </select>
+  hours
+
+  <select onchange={{action (mut selectedMinute) value="target.value"}}>
+    {{#each minutes as |minuteChoiche|}}
+      <option value={{minute}} selected={{eq selectedMinute minuteChoiche}}>{{minuteChoiche}}</option>
+    {{/each}}
+  </select>
+  minutes
+</div>

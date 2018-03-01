@@ -1,5 +1,15 @@
 {{#lf-form rules=rules onSubmit=(action 'submit') as |validateFunc isValid|}}
   {{lf-input
+    label="*Working hours"
+    name="duration"
+    property=model.duration
+    on-update=(action (mut model.duration))
+    inputComponent="working-time-picker"
+    validate=validateFunc
+    inputClass="no-lf-input-style"
+  }}
+
+  {{lf-input
     label="*Title"
     name="title"
     property=model.title

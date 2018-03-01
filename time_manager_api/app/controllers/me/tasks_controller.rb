@@ -45,7 +45,7 @@ class Me::TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:data).require(:attributes).permit(:title, :desciption)
+    params.require(:data).require(:attributes).permit(:title, :description, :date, :duration)
   end
 
   def validate_date_filter
