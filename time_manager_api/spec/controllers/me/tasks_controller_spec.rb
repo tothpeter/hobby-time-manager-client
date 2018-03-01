@@ -1,5 +1,57 @@
 describe Me::TasksController, type: :controller do
-  describe 'GET #index' do
+
+  describe "#validate_date_filter" do
+    before do
+      current_user = FactoryBot.create :user
+      authenticate_request current_user
+    end
+
+    context "when start date filter is missing" do
+      it "returns a 422" do
+        get :index, params: { start_date: 1 }
+
+        expect(json_response[:errors][0]).to include('missing')
+        expect(response.code).to eq('422')
+      end
+    end
+
+    context "when start date filter is missing" do
+      it "returns a 422" do
+        get :index, params: { end_date: 1 }
+
+        expect(json_response[:errors][0]).to include('missing')
+        expect(response.code).to eq('422')
+      end
+    end
+
+    context "when the time gap between start and end date is bigger than 3 months" do
+      it "returns a 422" do
+        get :index, params: { start_date: '2000-12-01', end_date: '2001-03-04' }
+
+        expect(json_response[:errors][0]).to include('months')
+        expect(response.code).to eq('422')
+      end
+    end
+
+    context "when the params contain something funny" do
+      it "returns a 422" do
+        get :index, params: { start_date: 'hack', end_date: 'malicious content' }
+
+        expect(json_response[:errors][0]).to include('invalid')
+        expect(response.code).to eq('422')
+      end
+    end
+
+    context "when the params are good" do
+      it "returns a 422" do
+        get :index, params: { start_date: '2000-01-01', end_date: '2000-04-01' }
+
+        expect(response.code).to eq('200')
+      end
+    end
+  end
+
+  describe "GET #index" do
     it "returns a list of tasks of the current user" do
       current_user = FactoryBot.create :user
       FactoryBot.create :task
