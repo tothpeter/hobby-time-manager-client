@@ -8,4 +8,8 @@
   alwaysShowCalendars=true
 }}
 
+<button class="btn btn-default" {{action 'export'}}>
+  <span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export
+</button>
+
 {{task-list tasks=model}}

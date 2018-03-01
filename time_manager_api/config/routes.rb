@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :me do
-    resources :tasks, only: :index
+    resources :tasks, only: :index do
+      get :export, on: :collection
+    end
   end
 
   resources :users do
@@ -12,4 +14,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users'
   }
+
+  namespace :development do
+    get 'tasks_export'
+  end
 end

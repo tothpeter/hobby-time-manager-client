@@ -13,4 +13,17 @@ class Me::TasksController < ApplicationController
 
     render json: tasks
   end
+
+  def export
+    tasks = current_user
+      .tasks
+      .between_dates(params[:start_date], params[:end_date])
+      .order(:date)
+
+    date_range = "#{params[:start_date]} - #{params[:end_date]}"
+
+    content = ExportService::Task.export tasks, date_range
+
+    render html: content.html_safe
+  end
 end
