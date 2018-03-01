@@ -1,0 +1,22 @@
+{{#lf-form rules=rules onSubmit=(action 'submit') as |validateFunc isValid|}}
+  {{lf-input
+    label="*Title"
+    name="title"
+    property=model.title
+    on-update=(action (mut model.title))
+    validate=validateFunc
+    errors=externalErrors.title
+  }}
+
+  {{lf-textarea
+    label="Description"
+    name="description"
+    property=model.description
+    on-update=(action (mut model.description))
+    validate=validateFunc
+    errors=externalErrors.description
+  }}
+
+  <button class="btn btn-primary" disabled={{not isValid}}>Save</button>
+  <button class="btn btn-default" {{action 'cancel'}}>Cancel</button>
+{{/lf-form}}

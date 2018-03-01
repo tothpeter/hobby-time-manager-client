@@ -9,5 +9,23 @@ export default ApplicationAdapter.extend({
     }
 
     return this._super(...arguments);
+  },
+
+  urlForFindRecord(id, modelName, snapshot) {
+    if (snapshot.adapterOptions.me) {
+      delete snapshot.adapterOptions.me;
+      return `/me${this._super(...arguments)}`;
+    }
+
+    return this._super(...arguments);
+  },
+
+  urlForUpdateRecord(id, modelName, snapshot) {
+    if (snapshot.adapterOptions.me) {
+      delete snapshot.adapterOptions.me;
+      return `/me${this._super(...arguments)}`;
+    }
+
+    return this._super(...arguments);
   }
 });

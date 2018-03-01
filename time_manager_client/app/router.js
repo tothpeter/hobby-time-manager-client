@@ -11,7 +11,9 @@ Router.map(function() {
   this.route('register');
 
   this.route('me');
+
   this.route('me.tasks', { path: 'me/tasks' });
+  this.route('me.tasks.task.edit', { path: 'me/tasks/:task_id/edit' });
 
   this.route('users');
   this.route('users.new', { path: 'users/new' });

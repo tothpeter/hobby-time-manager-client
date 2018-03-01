@@ -1,21 +1,34 @@
 class Me::TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :validate_date_filter, only: [:index, :export]
+  before_action :set_task, only: [:show, :update, :destroy]
 
   def index
     tasks = current_user
       .tasks
       .between_dates(params[:start_date], params[:end_date])
-      .order(:date)
+      .order(:date, :id)
 
     render json: tasks
+  end
+
+  def show
+    render json: @task
+  end
+
+  def update
+    if @task.update(task_params)
+      render json: @task
+    else
+      respond_with_errors @task
+    end
   end
 
   def export
     tasks = current_user
       .tasks
       .between_dates(params[:start_date], params[:end_date])
-      .order(:date)
+      .order(:date, :id)
 
     date_range = "#{params[:start_date]} - #{params[:end_date]}"
 
@@ -26,6 +39,14 @@ class Me::TasksController < ApplicationController
   end
 
   private
+
+  def set_task
+    @task = current_user.tasks.find(params[:id])
+  end
+
+  def task_params
+    params.require(:data).require(:attributes).permit(:title, :desciption)
+  end
 
   def validate_date_filter
     if params[:start_date].blank? || params[:end_date].blank?
