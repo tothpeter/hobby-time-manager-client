@@ -1,7 +1,11 @@
 .task-list {
+  li {
+    color: green;
+  }
+
   .under-preferred-working-hours {
     li {
-      background-color: red;
+      color: red;
     }
   }
 }
