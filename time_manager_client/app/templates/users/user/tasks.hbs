@@ -1,0 +1,15 @@
+{{date-range-picker
+  label='Date range filter'
+  start=startDate
+  end=endDate
+  applyAction=(action 'setDateRange')
+  dateLimit=dateLimit
+  format='YYYY-MM-DD'
+  alwaysShowCalendars=true
+}}
+
+{{!-- {{#link-to "me.tasks.new" class='btn btn-primary'}}
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new task
+{{/link-to}} --}}
+
+{{task-list tasks=model}}

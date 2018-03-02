@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :tasks
+
   resources :users do
     get :me, on: :collection
     patch :password, on: :member

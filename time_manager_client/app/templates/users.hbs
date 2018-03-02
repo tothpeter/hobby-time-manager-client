@@ -27,6 +27,9 @@
             <button type="button" class="btn" {{action 'deleteUser' user}}>
               <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
+            {{#link-to "users.user.tasks" user.id class='btn'}}
+              Tasks
+            {{/link-to}}
           </td>
           <td>{{user.email}}</td>
           <td>{{user.username}}</td>
