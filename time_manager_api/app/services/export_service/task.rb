@@ -33,12 +33,12 @@ module ExportService
     def self.format_time minutes
       hours, minutes = minutes.divmod 60
 
-      result = ''
+      result = []
 
-      result += "#{hours}h" if hours > 0
-      result += " #{minutes}m" if minutes > 0
+      result << "#{hours}h" if hours > 0
+      result << "#{minutes}m" if minutes > 0
 
-      result
+      result.join ' '
     end
   end
 end
