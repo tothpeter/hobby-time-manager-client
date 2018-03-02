@@ -4,7 +4,7 @@ module ErrorSerializer
       errors.map do |error_message|
         {
           status: 422,
-          source: { pointer: "/data/attributes/#{field}" },
+          source: { pointer: "/data/attributes/#{field.to_s.dasherize}" },
           detail: error_message
         }
       end
