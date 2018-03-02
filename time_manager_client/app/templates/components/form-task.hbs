@@ -1,5 +1,16 @@
 {{#lf-form rules=rules onSubmit=(action 'submit') as |validateFunc isValid|}}
   {{lf-input
+    label="*Date"
+    name="date"
+    property=model.date
+    on-update=(action 'updateDate')
+    inputComponent="lf-date-picker"
+    validate=validateFunc
+    inputClass="no-lf-input-style"
+    errors=externalErrors.date
+  }}
+
+  {{lf-input
     label="*Working hours"
     name="duration"
     property=model.duration
@@ -7,6 +18,7 @@
     inputComponent="working-time-picker"
     validate=validateFunc
     inputClass="no-lf-input-style"
+    errors=externalErrors.duration
   }}
 
   {{lf-input

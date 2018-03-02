@@ -18,13 +18,18 @@ export default Component.extend({
 
   rules: {
     sharedValidations: {
-      required: w('title')
+      required: w('title date')
     },
 
     duration: 'min(1)'
   },
 
   actions: {
+    updateDate(newDate) {
+      // We need this hack because, date type
+      this.model.set('date', moment(newDate + 'T01').toDate());
+    },
+
     submit() {
       this.model.save({adapterOptions:{me: true}}).then(() => {
         this.get('notifications').success('Updated successfully!');
