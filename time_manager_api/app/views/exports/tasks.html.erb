@@ -8,7 +8,7 @@
         color: green;
       }
 
-      .under-expected-working-time li {
+      .under-preferred-working-hours li {
         color: red;
       }
     </style>
@@ -19,7 +19,7 @@
     <% groups.each do |group| %>
       <h3><%= group.date %> - <%= group.total_time %></h3>
 
-      <ul class="<%= group.under_expected_working_time ? 'under-expected-working-time':''  %>">
+      <ul class="<%= group.under_preferred_working_hours ? 'under-preferred-working-hours':''  %>">
         <% group.tasks.each do |task| %>
           <li><%= task.description %></li>
         <% end %>

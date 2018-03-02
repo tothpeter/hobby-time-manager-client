@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-export function formatWorkingTime(duration) {
+export function formatWorkingHours(duration) {
   let hours   = Math.floor(duration / 60),
       minutes = duration % 60;
 
@@ -17,4 +17,4 @@ export function formatWorkingTime(duration) {
   return result.join(' ');
 }
 
-export default helper(formatWorkingTime);
+export default helper(formatWorkingHours);
