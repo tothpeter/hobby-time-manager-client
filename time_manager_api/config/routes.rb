@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :me do
-    resources :tasks, only: [:index, :show, :update, :create] do
+    resources :tasks do
       get :export, on: :collection
     end
   end

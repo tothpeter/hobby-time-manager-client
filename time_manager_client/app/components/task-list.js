@@ -31,5 +31,13 @@ export default Component.extend({
     });
 
     return groups;
-  })
+  }),
+
+  actions: {
+    deleteTask(task) {
+      if (window.confirm('Are you sure, you want to delete this task?')) {
+        task.destroyRecord({adapterOptions:{me: true}});
+      }
+    }
+  }
 });

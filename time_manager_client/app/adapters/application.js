@@ -39,5 +39,14 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     }
 
     return this._super(...arguments);
+  },
+
+  urlForDeleteRecord(_, __, snapshot) {
+    if (snapshot.adapterOptions && snapshot.adapterOptions.me) {
+      delete snapshot.adapterOptions.me;
+      return `/me${this._super(...arguments)}`;
+    }
+
+    return this._super(...arguments);
   }
 });

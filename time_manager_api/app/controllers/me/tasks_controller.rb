@@ -48,6 +48,10 @@ class Me::TasksController < ApplicationController
     render html: content.html_safe
   end
 
+  def destroy
+    @task.destroy
+  end
+
   private
 
   def set_task
