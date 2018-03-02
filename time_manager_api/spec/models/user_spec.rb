@@ -3,6 +3,9 @@ describe User, type: :model do
     it { is_expected.to validate_presence_of(:username) }
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password) }
+
+    it { is_expected.to validate_numericality_of(:preferred_working_hours_per_day).is_greater_than(0) }
+    it { is_expected.to validate_numericality_of(:preferred_working_hours_per_day).is_less_than_or_equal_to(24 * 60) }
   end
 
   describe 'Associations' do

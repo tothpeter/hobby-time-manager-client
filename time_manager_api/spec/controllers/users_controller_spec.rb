@@ -9,7 +9,8 @@ describe UsersController, type: :controller do
             password: 123456,
             username: 'Username',
             first_name: 'First name',
-            last_name: 'Last name'
+            last_name: 'Last name',
+            preferred_working_hours_per_day: 30,
           },
 
           type:"users"

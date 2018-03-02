@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:data).require(:attributes).permit(:email, :password, :username, :first_name, :last_name)
+      params.require(:data).require(:attributes).permit(:email, :password, :username, :first_name, :last_name, :preferred_working_hours_per_day)
     end
 
     def user_params_for_update
