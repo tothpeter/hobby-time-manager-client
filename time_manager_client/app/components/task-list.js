@@ -1,9 +1,10 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
   classNames: ['task-list'],
-  preferredWorkingHoursPerDay: 40,
+  currentUser: service(),
 
   groups: computed('tasks.[]', function() {
     let groups = [],
@@ -26,8 +27,10 @@ export default Component.extend({
       currentGroup.tasks.pushObject(task);
     });
 
+    let preferredWorkingHoursPerDay = this.get('currentUser.user.preferredWorkingHoursPerDay');
+
     groups.forEach((group) => {
-      group.underPreferredWorkingHours = group.totalDuration < this.preferredWorkingHoursPerDay;
+      group.underPreferredWorkingHours = group.totalDuration < preferredWorkingHoursPerDay;
     });
 
     return groups;

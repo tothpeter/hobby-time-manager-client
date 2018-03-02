@@ -21,7 +21,9 @@ export default Component.extend({
   basicProfileRules: {
     sharedValidations: {
       required: w('username')
-    }
+    },
+
+    preferredWorkingHoursPerDay: 'min(1)'
   },
 
   passwordRules: {

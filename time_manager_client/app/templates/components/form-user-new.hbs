@@ -72,5 +72,16 @@
     </div>
   </div>
 
+  {{lf-input
+    label="*Preferred working hours per day"
+    name="preferredWorkingHoursPerDay"
+    property=model.preferredWorkingHoursPerDay
+    on-update=(action (mut model.preferredWorkingHoursPerDay))
+    inputComponent="working-time-picker"
+    validate=validateFunc
+    inputClass="no-lf-input-style"
+    errors=externalErrors.preferredWorkingHoursPerDay
+  }}
+
   <button class="btn btn-primary" disabled={{not isValid}}>{{submitButtonLabel}}</button>
 {{/lf-form}}

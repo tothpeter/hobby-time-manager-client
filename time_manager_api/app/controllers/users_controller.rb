@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     end
 
     def user_params_for_update
-      params.require(:data).require(:attributes).permit(:username, :first_name, :last_name)
+      params.require(:data).require(:attributes).permit(:username, :first_name, :last_name, :preferred_working_hours_per_day)
     end
 
     def password_params

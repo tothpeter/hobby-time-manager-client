@@ -8,5 +8,6 @@ export default DS.Model.extend({
   password: DS.attr(),
   username: DS.attr(),
   firstName: DS.attr(),
-  lastName: DS.attr()
+  lastName: DS.attr(),
+  preferredWorkingHoursPerDay: DS.attr('number')
 });

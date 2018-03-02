@@ -22,6 +22,7 @@ export default Component.extend({
 
     email: 'email',
     password: 'min(6)',
-    passwordConfirmation: 'same(password)'
+    passwordConfirmation: 'same(password)',
+    preferredWorkingHoursPerDay: 'min(1)'
   }
 });
