@@ -16,6 +16,16 @@ class Me::TasksController < ApplicationController
     render json: @task
   end
 
+  def create
+    @task = current_user.tasks.new(task_params)
+
+    if @task.save
+      render json: @task, status: :created
+    else
+      respond_with_errors @task
+    end
+  end
+
   def update
     if @task.update(task_params)
       render json: @task

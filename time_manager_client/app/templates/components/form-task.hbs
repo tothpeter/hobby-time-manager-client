@@ -39,6 +39,6 @@
     errors=externalErrors.description
   }}
 
-  <button class="btn btn-primary" disabled={{not isValid}}>Save</button>
+  <button class="btn btn-primary" disabled={{not isValid}}>{{label}}</button>
   <button class="btn btn-default" {{action 'cancel'}}>Cancel</button>
 {{/lf-form}}

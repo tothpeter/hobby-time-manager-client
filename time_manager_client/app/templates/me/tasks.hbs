@@ -12,4 +12,8 @@
   <span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export
 </button>
 
+{{#link-to "me.tasks.new" class='btn btn-primary'}}
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new task
+{{/link-to}}
+
 {{task-list tasks=model}}

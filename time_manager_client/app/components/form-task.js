@@ -5,6 +5,20 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   notifications: service('notification-messages'),
+  store: service(),
+
+  init() {
+    this._super(...arguments);
+
+    if (this.get('createForm')) {
+      this.set('label', 'Create');
+      this.set('model.date', new Date());
+    } else {
+      this.set('label', 'Update');
+    }
+  },
+
+  createForm: true,
 
   externalErrors: computed('model.errors.[]', function() {
     let clone = {}
@@ -32,12 +46,17 @@ export default Component.extend({
 
     submit() {
       this.model.save({adapterOptions:{me: true}}).then(() => {
-        this.get('notifications').success('Updated successfully!');
+
+        this.get('notifications').success(`${this.get('label')} successfully!`);
+
+        if (this.get('createForm')) {
+          this.set('model', this.get('store').createRecord('task'));
+        }
       });
     },
 
     cancel() {
       this.model.rollbackAttributes();
-    },
+    }
   }
 });
