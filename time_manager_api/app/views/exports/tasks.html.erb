@@ -17,7 +17,7 @@
     <h1><%= date_range %></h1>
 
     <% groups.each do |group| %>
-      <h3><%= group.date %> - <%= group.total_time %></h3>
+      <h3><%= group.date %> - total: <%= group.total_time %></h3>
 
       <ul class="<%= group.under_preferred_working_hours ? 'under-preferred-working-hours':''  %>">
         <% group.tasks.each do |task| %>
