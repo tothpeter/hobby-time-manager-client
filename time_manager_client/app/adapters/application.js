@@ -15,7 +15,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   },
 
   urlForFindRecord(id, modelName, snapshot) {
-    if (snapshot.adapterOptions.me) {
+    if (snapshot.adapterOptions && snapshot.adapterOptions.me) {
       delete snapshot.adapterOptions.me;
       return `/me${this._super(...arguments)}`;
     }
@@ -23,8 +23,8 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     return this._super(...arguments);
   },
 
-  urlForCreateRecord(modelName, snapshot) {
-    if (snapshot.adapterOptions.me) {
+  urlForCreateRecord(_, snapshot) {
+    if (snapshot.adapterOptions && snapshot.adapterOptions.me) {
       delete snapshot.adapterOptions.me;
       return `/me${this._super(...arguments)}`;
     }
@@ -33,7 +33,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   },
 
   urlForUpdateRecord(_id, _modelName, snapshot) {
-    if (snapshot.adapterOptions.me) {
+    if (snapshot.adapterOptions && snapshot.adapterOptions.me) {
       delete snapshot.adapterOptions.me;
       return `/me${this._super(...arguments)}`;
     }
