@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tasks
+  resources :tasks do
+    get :export, on: :collection
+  end
 
   resources :users do
     get :me, on: :collection

@@ -2,14 +2,11 @@ class TasksController < ApplicationController
   include TasksControllerConcern
 
   before_action :authenticate_user!
-  before_action :validate_date_filter, only: :index
+  before_action :validate_date_filter, only: [:index, :export]
+  before_action :validate_user_filter, only: [:index, :export]
   before_action :set_task, only: [:show, :update, :destroy]
 
   def index
-    if params[:user_id].blank?
-      return render json: {errors: ['user_id is required'] }, status: 422
-    end
-
     tasks = Task
       .by_user_id(params[:user_id])
       .between_dates(params[:start_date], params[:end_date])
@@ -45,6 +42,20 @@ class TasksController < ApplicationController
     @task.destroy
   end
 
+  def export
+    tasks = Task
+      .by_user_id(params[:user_id])
+      .between_dates(params[:start_date], params[:end_date])
+      .order(:date, :id)
+
+    date_range = "#{params[:start_date]} - #{params[:end_date]}"
+    preferred_working_hours_per_day = User.find(params[:user_id]).preferred_working_hours_per_day
+
+    content = ExportService::Task.export tasks, date_range, preferred_working_hours_per_day
+
+    render html: content.html_safe
+  end
+
   private
 
   def set_task
@@ -53,5 +64,11 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:data).require(:attributes).permit(:title, :description, :date, :duration)
+  end
+
+  def validate_user_filter
+    if params[:user_id].blank?
+      return render json: {errors: ['user_id is required'] }, status: 422
+    end
   end
 end

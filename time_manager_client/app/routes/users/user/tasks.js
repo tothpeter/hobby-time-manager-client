@@ -1,6 +1,8 @@
 import Route from '@ember/routing/route';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import RSVP from 'rsvp';
 
-export default Route.extend({
+export default Route.extend(AuthenticatedRouteMixin, {
   queryParams: {
     dateRange: {
       refreshModel: true
@@ -16,7 +18,10 @@ export default Route.extend({
       end_date: endDate
     }
 
-    return this.get('store').query('task', query);
+    return RSVP.hash({
+      tasks: this.store.query('task', query),
+      user: this.store.findRecord('user', params.user_id)
+    });
   },
 
   resetController: function(controller, isExiting) {
