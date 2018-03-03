@@ -6,6 +6,17 @@ export default Component.extend({
   classNames: ['task-list'],
   currentUser: service(),
   me: true,
+  adapterParams: computed('me', function() {
+    if (this.get('me')) {
+      return {
+        adapterOptions: {
+          me: true
+        }
+      };
+    } else {
+      return {};
+    }
+  }),
 
   groups: computed('tasks.[]', function() {
     let groups = [],
@@ -40,7 +51,7 @@ export default Component.extend({
   actions: {
     deleteTask(task) {
       if (window.confirm('Are you sure, you want to delete this task?')) {
-        task.destroyRecord({adapterOptions:{me: true}});
+        task.destroyRecord(this.get('adapterParams'));
       }
     }
   }
