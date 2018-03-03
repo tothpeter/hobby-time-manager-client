@@ -5,8 +5,8 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   authorizer: 'authorizer:application',
 
   urlForQuery(query) {
-    if (query.own) {
-      delete query.own;
+    if (query.me) {
+      delete query.me;
 
       return `/me${this._super(...arguments)}`;
     }

@@ -12,7 +12,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     let [ startDate, endDate ] = params.dateRange.split('|');
 
     let query = {
-      own: true,
+      me: true,
       start_date: startDate,
       end_date: endDate
     }
