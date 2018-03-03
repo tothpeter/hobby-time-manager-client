@@ -5,18 +5,6 @@ class TasksController < ApplicationController
   before_action :validate_date_filter, only: :index
   before_action :set_task, only: [:show, :update, :destroy]
 
-  def show
-    render json: @task
-  end
-
-  def update
-    if @task.update(task_params)
-      render json: @task
-    else
-      respond_with_errors @task
-    end
-  end
-
   def index
     if params[:user_id].blank?
       return render json: {errors: ['user_id is required'] }, status: 422
@@ -30,11 +18,23 @@ class TasksController < ApplicationController
     render json: tasks
   end
 
+  def show
+    render json: @task
+  end
+
   def create
     @task = Task.new(task_params)
 
     if @task.save
       render json: @task, status: :created
+    else
+      respond_with_errors @task
+    end
+  end
+
+  def update
+    if @task.update(task_params)
+      render json: @task
     else
       respond_with_errors @task
     end
