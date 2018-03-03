@@ -68,7 +68,7 @@ export default Component.extend({
     },
 
     cancel() {
-      this.model.rollbackAttributes();
+      this.get('cancel')();
     }
   }
 });
