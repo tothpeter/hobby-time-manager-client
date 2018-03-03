@@ -24,6 +24,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = params[:data][:relationships][:user][:data][:id]
 
     if @task.save
       render json: @task, status: :created
@@ -51,6 +52,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:data).require(:attributes).permit(:title, :description, :date, :duration, :user_id)
+    params.require(:data).require(:attributes).permit(:title, :description, :date, :duration)
   end
 end

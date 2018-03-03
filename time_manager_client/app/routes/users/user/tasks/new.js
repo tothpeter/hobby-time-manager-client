@@ -1,12 +1,17 @@
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-import RSVP from 'rsvp';
 
 export default Route.extend(AuthenticatedRouteMixin, {
   model(params) {
-    return RSVP.hash({
-      task: this.store.createRecord('task', {userId: params.user_id}),
-      user: this.store.find('user', params.user_id)
+    let task = this.store.createRecord('task');
+
+    return this.get('store').findRecord('user', params.user_id).then(function(user) {
+      task.set('user', user);
+
+      return {
+        task: task,
+        user: user
+      };
     });
   },
 
