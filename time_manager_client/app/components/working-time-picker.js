@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed, observer } from '@ember/object';
+import { observer } from '@ember/object';
 
 export default Component.extend({
   init() {
@@ -19,7 +19,7 @@ export default Component.extend({
   selectionChange: observer('selectedHour', 'selectedMinute', function() {
     let duration = this.selectedHour * 60 + this.selectedMinute * 1;
 
-    this.sendAction('update', duration);
+    this.get('update')(duration);
   }),
 
   durationChange: observer('duration', 'value', function() {
