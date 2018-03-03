@@ -43,15 +43,15 @@ class TasksController < ApplicationController
   end
 
   def export
-    tasks = Task
-      .by_user_id(params[:user_id])
+    user = User.find(params[:user_id])
+    tasks = user
+      .tasks
       .between_dates(params[:start_date], params[:end_date])
       .order(:date, :id)
 
     date_range = "#{params[:start_date]} - #{params[:end_date]}"
-    preferred_working_hours_per_day = User.find(params[:user_id]).preferred_working_hours_per_day
 
-    content = ExportService::Task.export tasks, date_range, preferred_working_hours_per_day
+    content = ExportService::Task.export tasks, date_range, user
 
     render html: content.html_safe
   end

@@ -1,7 +1,7 @@
 module ExportService
   class Task
-    def self.export tasks, date_range, preferred_working_hours
-      groups = group_tasks tasks, preferred_working_hours
+    def self.export tasks, date_range, user
+      groups = group_tasks tasks, user.preferred_working_hours_per_day
 
       template = File.read 'app/views/exports/tasks.html.erb'
 
@@ -24,7 +24,7 @@ module ExportService
       total_time = tasks.inject(0){|sum, t| sum + t.duration }
       OpenStruct.new({
         date: date,
-        total_time: format_time(total_time),
+        total_time: total_time,
         under_preferred_working_hours: total_time < preferred_working_hours,
         tasks: tasks
       })
