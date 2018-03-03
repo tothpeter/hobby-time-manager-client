@@ -17,8 +17,11 @@ Router.map(function() {
     });
   });
 
-  this.route('users');
-  this.route('users.new', { path: 'users/new' });
+  this.route('users', function() {
+    this.route('new');
+  });
+
+
   this.route('users.user.edit', { path: 'users/:user_id/edit' });
 
   this.route('users.user.tasks', { path: 'users/:user_id/tasks' });
