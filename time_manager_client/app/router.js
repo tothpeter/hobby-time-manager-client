@@ -21,12 +21,14 @@ Router.map(function() {
     this.route('new');
     this.route('user', { path: ':user_id' }, function() {
       this.route('edit');
+      this.route('tasks', function() {
+        this.route('new');
+        this.route('task', { path: ':task_id' }, function() {
+          this.route('edit');
+        });
+      });
     });
   });
-
-  this.route('users.user.tasks', { path: 'users/:user_id/tasks' });
-  this.route('users.user.tasks.new', { path: 'users/:user_id/tasks/new' });
-  this.route('users.user.tasks.task.edit', { path: 'users/:user_id/tasks/:task_id/edit' });
 });
 
 export default Router;

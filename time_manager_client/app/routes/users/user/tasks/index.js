@@ -11,16 +11,17 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   model(params) {
     let [ startDate, endDate ] = params.dateRange.split('|');
+    let user = this.modelFor('users.user');
 
     let query = {
-      user_id: params.user_id,
+      user_id: user.id,
       start_date: startDate,
       end_date: endDate
     }
 
     return RSVP.hash({
       tasks: this.store.query('task', query),
-      user: this.store.findRecord('user', params.user_id)
+      user: user
     });
   },
 
