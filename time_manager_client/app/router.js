@@ -21,6 +21,7 @@ Router.map(function() {
   this.route('users.user.edit', { path: 'users/:user_id/edit' });
 
   this.route('users.user.tasks', { path: 'users/:user_id/tasks' });
+  this.route('users.user.tasks.new', { path: 'users/:user_id/tasks/new' });
   this.route('users.user.tasks.task.edit', { path: 'users/:user_id/tasks/:task_id/edit' });
 });
 

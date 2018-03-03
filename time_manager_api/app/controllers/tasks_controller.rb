@@ -30,6 +30,16 @@ class TasksController < ApplicationController
     render json: tasks
   end
 
+  def create
+    @task = Task.new(task_params)
+
+    if @task.save
+      render json: @task, status: :created
+    else
+      respond_with_errors @task
+    end
+  end
+
   private
 
   def set_task
@@ -37,6 +47,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:data).require(:attributes).permit(:title, :description, :date, :duration)
+    params.require(:data).require(:attributes).permit(:title, :description, :date, :duration, :user_id)
   end
 end

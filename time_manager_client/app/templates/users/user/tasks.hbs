@@ -8,8 +8,8 @@
   alwaysShowCalendars=true
 }}
 
-{{!-- {{#link-to "me.tasks.new" class='btn btn-primary'}}
+{{#link-to "users.user.tasks.new" model.firstObject.user.id class='btn btn-primary'}}
   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new task
-{{/link-to}} --}}
+{{/link-to}}
 
 {{task-list tasks=model me=false}}

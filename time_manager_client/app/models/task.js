@@ -7,5 +7,6 @@ export default DS.Model.extend({
   title: DS.attr(),
   description: DS.attr(),
   date: DS.attr('date'),
-  duration: DS.attr('number')
+  duration: DS.attr('number'),
+  userId: DS.attr('number')
 });
