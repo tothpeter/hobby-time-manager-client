@@ -3,6 +3,19 @@ class TasksController < ApplicationController
 
   before_action :authenticate_user!
   before_action :validate_date_filter, only: :index
+  before_action :set_task, only: [:show, :update, :destroy]
+
+  def show
+    render json: @task
+  end
+
+  def update
+    if @task.update(task_params)
+      render json: @task
+    else
+      respond_with_errors @task
+    end
+  end
 
   def index
     if params[:user_id].blank?
@@ -15,5 +28,15 @@ class TasksController < ApplicationController
       .order(:date, :id)
 
     render json: tasks
+  end
+
+  private
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
+  def task_params
+    params.require(:data).require(:attributes).permit(:title, :description, :date, :duration)
   end
 end

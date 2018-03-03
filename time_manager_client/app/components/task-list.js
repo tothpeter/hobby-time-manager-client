@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   classNames: ['task-list'],
   currentUser: service(),
+  me: true,
 
   groups: computed('tasks.[]', function() {
     let groups = [],
