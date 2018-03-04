@@ -50,10 +50,6 @@ export default Component.extend({
 
         this.get('notifications').success(`${this.get('label')} successfully!`);
 
-        if (this.get('createForm') && !this.get('me')) {
-          this.set('model', this.get('store').createRecord('task'));
-        }
-
         if (this.get('after-save')) {
           this.get('after-save')(this.model);
         }
