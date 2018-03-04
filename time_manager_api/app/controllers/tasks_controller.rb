@@ -24,7 +24,7 @@ class TasksController < ApplicationController
 
   def validate_user_filter
     if params[:user_id].blank?
-      return render json: {errors: ['user_id is required'] }, status: 422
+      respond_with_custom_error 'user_id is required', 422
     end
   end
 end

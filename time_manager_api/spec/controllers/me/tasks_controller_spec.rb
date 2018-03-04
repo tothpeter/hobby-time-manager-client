@@ -10,7 +10,7 @@ describe Me::TasksController, type: :controller do
       it "returns a 422" do
         get :index, params: { start_date: 1 }
 
-        expect(json_response[:errors][0]).to include('missing')
+        expect(json_response[:errors][0][:title]).to include('missing')
         expect(response.code).to eq('422')
       end
     end
@@ -19,7 +19,7 @@ describe Me::TasksController, type: :controller do
       it "returns a 422" do
         get :index, params: { end_date: 1 }
 
-        expect(json_response[:errors][0]).to include('missing')
+        expect(json_response[:errors][0][:title]).to include('missing')
         expect(response.code).to eq('422')
       end
     end
@@ -28,7 +28,7 @@ describe Me::TasksController, type: :controller do
       it "returns a 422" do
         get :index, params: { start_date: '2000-12-01', end_date: '2001-03-04' }
 
-        expect(json_response[:errors][0]).to include('months')
+        expect(json_response[:errors][0][:title]).to include('months')
         expect(response.code).to eq('422')
       end
     end
@@ -37,7 +37,7 @@ describe Me::TasksController, type: :controller do
       it "returns a 422" do
         get :index, params: { start_date: 'hack', end_date: 'malicious content' }
 
-        expect(json_response[:errors][0]).to include('invalid')
+        expect(json_response[:errors][0][:title]).to include('invalid')
         expect(response.code).to eq('422')
       end
     end
