@@ -3,13 +3,6 @@ class TasksController < ApplicationController
   include TasksControllerConcern
 
   before_action :authenticate_user!
-
-  def context
-    context_params = { params: params }
-
-    super.merge!(context_params)
-  end
-
   before_action :validate_date_filter, only: [:index, :export]
   before_action :validate_user_filter, only: [:index, :export]
 
