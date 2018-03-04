@@ -10,21 +10,23 @@ Router.map(function() {
   this.route('login');
   this.route('register');
 
-  this.route('me', function() {
-    this.route('tasks', function() {
-      this.route('new');
-      this.route('task.edit', { path: ':task_id/edit' });
-    });
-  });
-
-  this.route('users', function() {
-    this.route('new');
-    this.route('user', { path: ':user_id' }, function() {
-      this.route('edit');
+  this.route('dashboard', { path: '' }, function() {
+    this.route('me', function() {
       this.route('tasks', function() {
         this.route('new');
-        this.route('task', { path: ':task_id' }, function() {
-          this.route('edit');
+        this.route('task.edit', { path: ':task_id/edit' });
+      });
+    });
+
+    this.route('users', function() {
+      this.route('new');
+      this.route('user', { path: ':user_id' }, function() {
+        this.route('edit');
+        this.route('tasks', function() {
+          this.route('new');
+          this.route('task', { path: ':task_id' }, function() {
+            this.route('edit');
+          });
         });
       });
     });

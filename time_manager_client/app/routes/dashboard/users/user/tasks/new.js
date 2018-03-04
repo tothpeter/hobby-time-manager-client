@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   model(params) {
-    let user = this.modelFor('users.user'),
+    let user = this.modelFor('dashboard.users.user'),
         task = this.store.createRecord('task', { user: user });
 
     return {

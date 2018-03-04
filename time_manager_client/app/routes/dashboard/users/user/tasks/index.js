@@ -11,7 +11,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   model(params) {
     let [ startDate, endDate ] = params.dateRange.split('|');
-    let user = this.modelFor('users.user');
+    let user = this.modelFor('dashboard.users.user');
 
     let query = {
       user_id: user.id,

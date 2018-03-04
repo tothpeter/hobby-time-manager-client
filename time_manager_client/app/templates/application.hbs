@@ -14,13 +14,13 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li>{{#link-to "me.tasks"}}My tasks{{/link-to}}</li>
-        <li>{{#link-to "users"}}Users{{/link-to}}</li>
+        <li>{{#link-to "dashboard.me.tasks"}}My tasks{{/link-to}}</li>
+        <li>{{#link-to "dashboard.users"}}Users{{/link-to}}</li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
-          <li>{{#link-to "me"}}Profil{{/link-to}}</li>
+          <li>{{#link-to "dashboard.me"}}Profil{{/link-to}}</li>
           <li>
             <div class="navbar-form">
               <button class="btn btn-default" {{action "logout"}}>Logout</button>

@@ -12,7 +12,7 @@ export default Controller.extend({
     cancel() {
       let userId = this.get('model.user.id');
 
-      this.transitionToRoute('users.user.tasks', userId);
+      this.transitionToRoute('dashboard.users.user.tasks', userId);
     }
   }
 });
