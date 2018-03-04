@@ -14,7 +14,9 @@ Router.map(function() {
     this.route('me', function() {
       this.route('tasks', function() {
         this.route('new');
-        this.route('task.edit', { path: ':task_id/edit' });
+        this.route('task', { path: ':task_id' }, function() {
+          this.route('edit');
+        });
       });
     });
 
