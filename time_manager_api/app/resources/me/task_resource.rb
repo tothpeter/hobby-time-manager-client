@@ -10,6 +10,10 @@ class Me::TaskResource < TaskResource
     scope
   end
 
+  before_save do
+    @model.user_id = context[:current_user].id
+  end
+
   def self.resource_for type
     if type.downcase.include? 'user'
       UserResource
@@ -17,8 +21,4 @@ class Me::TaskResource < TaskResource
       super type
     end
   end
-
-  # def self.updatable_fields(context)
-  #   super - [:user, :user_id]
-  # end
 end
