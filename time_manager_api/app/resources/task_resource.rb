@@ -1,7 +1,7 @@
 class TaskResource < JSONAPI::Resource
   attributes :title, :description, :date, :duration
 
-  belongs_to :user, always_include_linkage_data: true
+  has_one :user, always_include_linkage_data: true
 
   def self.records options = {}
     params = options[:context][:params]
@@ -10,9 +10,15 @@ class TaskResource < JSONAPI::Resource
       Task
         .by_user_id(params[:user_id])
         .between_dates(params[:start_date], params[:end_date])
-        .order(:date, :id)
     else
       Task
     end
+  end
+
+  def self.default_sort
+    [
+      { field: 'date', direction: :asc },
+      { field: 'id', direction: :asc }
+    ]
   end
 end
