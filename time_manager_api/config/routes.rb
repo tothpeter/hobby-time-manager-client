@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tasks do
+  jsonapi_resources :tasks do
     get :export, on: :collection
   end
 
