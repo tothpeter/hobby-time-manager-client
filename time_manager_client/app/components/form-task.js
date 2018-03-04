@@ -7,17 +7,6 @@ export default Component.extend({
   notifications: service('notification-messages'),
   store: service(),
   me: true,
-  adapterParams: computed('me', function() {
-    if (this.get('me')) {
-      return {
-        adapterOptions: {
-          me: true
-        }
-      };
-    } else {
-      return {};
-    }
-  }),
 
   init() {
     this._super(...arguments);
@@ -57,7 +46,7 @@ export default Component.extend({
     },
 
     submit() {
-      this.model.save(this.get('adapterParams')).then(() => {
+      this.model.save(this._adapterParams()).then(() => {
 
         this.get('notifications').success(`${this.get('label')} successfully!`);
 
@@ -73,6 +62,18 @@ export default Component.extend({
 
     cancel() {
       this.get('cancel')();
+    }
+  },
+
+  _adapterParams: function() {
+    if (this.get('me')) {
+      return {
+        adapterOptions: {
+          me: true
+        }
+      };
+    } else {
+      return {};
     }
   }
 });
