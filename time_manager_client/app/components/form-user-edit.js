@@ -42,7 +42,7 @@ export default Component.extend({
       });
     },
 
-    cancel(){
+    resetProfile() {
       this.model.rollbackAttributes();
     },
 
@@ -57,10 +57,6 @@ export default Component.extend({
         this.setProperties({ password: null, passwordConfirmation: null });
         this.get('notifications').success('Password updated successfully!');
       });
-    },
-
-    cancelPassword() {
-      this.setProperties({ password: null, passwordConfirmation: null });
     }
   }
 });
