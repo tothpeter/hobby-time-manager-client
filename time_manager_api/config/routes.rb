@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :me do
-    resources :tasks do
+    jsonapi_resources :tasks do
       get :export, on: :collection
     end
   end
