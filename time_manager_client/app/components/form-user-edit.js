@@ -3,10 +3,10 @@ import { w } from '@ember/string';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
-
 export default Component.extend({
   notifications: service('notification-messages'),
   ajax: service(),
+  currentUser: service(),
 
   externalErrors: computed('model.errors.[]', function() {
     let clone = {}

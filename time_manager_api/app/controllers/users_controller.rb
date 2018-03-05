@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    assign_access_level
 
     if @user.save
       @user.confirm
@@ -30,6 +31,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    assign_access_level
+
     if @user.update(user_params_for_update)
       render json: @user
     else
@@ -64,5 +67,11 @@ class UsersController < ApplicationController
 
     def password_params
       params.permit(:password)
+    end
+
+    def assign_access_level
+      if current_user && current_user.admin?
+        @user.access_level = params[:data][:attributes][:access_level]
+      end
     end
 end
