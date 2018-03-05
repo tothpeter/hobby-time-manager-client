@@ -33,7 +33,7 @@ export default Component.extend({
 
   rules: {
     sharedValidations: {
-      required: w('title date')
+      required: w('title date duration')
     },
 
     duration: 'min(1)'
