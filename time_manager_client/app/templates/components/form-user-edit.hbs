@@ -5,12 +5,12 @@
   <div class="panel-body">
     {{#lf-form rules=basicProfileRules onSubmit=(action 'updateProfile') as |validateFunc isValid|}}
 
-        {{lf-input
-          name="email"
-          label="E-mail"
-          property=model.email
-          disabled=true
-        }}
+      {{lf-input
+        name="email"
+        label="E-mail"
+        property=model.email
+        disabled=true
+      }}
 
       <div class="row">
         <div class="col-lg-4">
