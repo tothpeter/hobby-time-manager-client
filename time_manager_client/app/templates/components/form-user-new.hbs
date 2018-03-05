@@ -81,5 +81,18 @@
     errors=externalErrors.preferredWorkingHoursPerDay
   }}
 
+  {{#if currentUser.user.isAdmin}}
+    <div class="form-group">
+      <label>Access level</label>
+      <div>
+        <select onchange={{action (mut model.accessLevel) value="target.value"}}>
+          <option value="employee" selected={{eq model.accessLevel 'employee'}}>Employee</option>
+          <option value="manager" selected={{eq model.accessLevel 'manager'}}>Manager</option>
+          <option value="admin" selected={{eq model.accessLevel 'admin'}}>Admin</option>
+        </select>
+      </div>
+    </div>
+  {{/if}}
+
   <button class="btn btn-primary" disabled={{not isValid}}>{{submitButtonLabel}}</button>
 {{/lf-form}}
