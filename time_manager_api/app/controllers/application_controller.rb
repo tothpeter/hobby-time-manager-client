@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::API
+  include CanCan::ControllerAdditions
   include JSONAPI::ActsAsResourceController
+
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_with_custom_error exception.message, 403
+  end
 
   def context
     {

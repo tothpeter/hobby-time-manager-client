@@ -2,6 +2,8 @@ class Me::TasksController < ApplicationController
   include JSONAPI::ActsAsResourceController
   include TasksControllerConcern
 
+  load_and_authorize_resource
+
   before_action :authenticate_user!
   before_action :validate_date_filter, only: [:index, :export]
 

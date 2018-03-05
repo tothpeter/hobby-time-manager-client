@@ -25,15 +25,18 @@ module SeedHelper::Users
     result = [
       {
         email: 'test@test.com',
-        username: 'Peter08'
+        username: 'Peter08',
+        access_level: :admin
       },
       {
         email: 'manager@manager.com',
-        username: 'Manager01'
+        username: 'Manager01',
+        access_level: :manager
       },
       {
         email: 'employee@employee.com',
-        username: 'Employee01'
+        username: 'Employee01',
+        access_level: :employee
       }
     ]
 

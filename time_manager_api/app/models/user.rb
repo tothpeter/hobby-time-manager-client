@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  enum access_level: [:employee, :manager, :admin]
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :token_authenticatable

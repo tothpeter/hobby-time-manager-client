@@ -6,7 +6,7 @@ describe Me::TasksController, type: :controller do
       authenticate_request current_user
     end
 
-    context "when start date filter is missing" do
+    context "when the start date filter is missing" do
       it "returns a 422" do
         get :index, params: { start_date: 1 }
 
@@ -15,7 +15,7 @@ describe Me::TasksController, type: :controller do
       end
     end
 
-    context "when start date filter is missing" do
+    context "when the end date filter is missing" do
       it "returns a 422" do
         get :index, params: { end_date: 1 }
 
@@ -52,7 +52,7 @@ describe Me::TasksController, type: :controller do
   end
 
   describe "GET #index" do
-    it "returns a list of tasks of the current user" do
+    it "returns the tasks of the current user only" do
       current_user = FactoryBot.create :user
       FactoryBot.create :task
       task = FactoryBot.create :task, user: current_user
