@@ -16,7 +16,9 @@
       {{#if session.isAuthenticated}}
         <ul class="nav navbar-nav">
           <li>{{#link-to "dashboard.me.tasks"}}My tasks{{/link-to}}</li>
-          <li>{{#link-to "dashboard.users"}}Users{{/link-to}}</li>
+          {{#if (can 'manage users')}}
+            <li>{{#link-to "dashboard.users"}}Users{{/link-to}}</li>
+          {{/if}}
         </ul>
       {{/if}}
 
