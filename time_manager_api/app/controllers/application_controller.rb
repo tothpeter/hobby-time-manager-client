@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
   include JSONAPI::ActsAsResourceController
 
   rescue_from CanCan::AccessDenied do |exception|
-    respond_with_custom_error exception.message, 403
+    respond_with_custom_error 'You are not authorized to perform this action.', 403
   end
 
   def context
