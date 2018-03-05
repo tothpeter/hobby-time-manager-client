@@ -26,6 +26,11 @@ module.exports = function(environment) {
       icons: 'bootstrap'
     },
 
+    'ember-simple-auth': {
+      routeAfterAuthentication:    'dashboard',
+      routeIfAlreadyAuthenticated: 'dashboard'
+    },
+
     moment: {
       outputFormat: 'YYYY-MM-DD'
     }
