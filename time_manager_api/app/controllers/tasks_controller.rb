@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   load_and_authorize_resource
 
   before_action :authenticate_user!
+  before_action :authorise_user!
   before_action :validate_date_filter, only: [:index, :export]
   before_action :validate_user_filter, only: [:index, :export]
 
@@ -23,6 +24,12 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def authorise_user!
+    unless current_user.admin?
+      respond_with_custom_error 'Current user is not authorised to use this endpoint', 403
+    end
+  end
 
   def validate_user_filter
     if params[:user_id].blank?
