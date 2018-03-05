@@ -20,7 +20,7 @@ export default Component.extend({
 
   basicProfileRules: {
     sharedValidations: {
-      required: w('username')
+      required: w('username preferredWorkingHoursPerDay')
     },
 
     preferredWorkingHoursPerDay: 'min(1)'

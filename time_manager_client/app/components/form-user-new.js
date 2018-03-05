@@ -19,7 +19,7 @@ export default Component.extend({
 
   rules: {
     sharedValidations: {
-      required: w('email password passwordConfirmation username')
+      required: w('email password passwordConfirmation username preferredWorkingHoursPerDay')
     },
 
     email: 'email',
