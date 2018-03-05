@@ -1,4 +1,4 @@
-describe '/users endpoint', type: :request do
+describe '/users' do
   describe "POST #create" do
     it "creates a new user and returns it" do
       request_payload = {
@@ -9,10 +9,10 @@ describe '/users endpoint', type: :request do
             username: 'Username',
             first_name: 'First name',
             last_name: 'Last name',
-            preferred_working_hours_per_day: 30,
+            preferred_working_hours_per_day: 30
           },
 
-          type:"users"
+          type: 'users'
         }
       }
 
