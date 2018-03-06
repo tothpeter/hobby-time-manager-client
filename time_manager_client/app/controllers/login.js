@@ -11,13 +11,14 @@ export default Controller.extend({
       if (!identification || !password) { return false; }
 
       this.get('session')
-        .authenticate('authenticator:devise', identification, password)
-        .then(() => {
-          this.get('notifications').success('Logged in');
-        })
-        .catch((response) => {
-          this.get('notifications').error(response.error);
-        });
+        .authenticate('authenticator:devise', identification, password).then(
+          () => {
+            this.get('notifications').success('Logged in');
+          },
+          () => {
+            this.get('notifications').error(response.error);
+          }
+        );
     }
   }
 });
