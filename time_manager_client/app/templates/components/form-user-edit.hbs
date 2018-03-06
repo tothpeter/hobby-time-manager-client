@@ -4,12 +4,13 @@
   </div>
   <div class="panel-body">
     {{#lf-form rules=basicProfileRules onSubmit=(action 'updateProfile') as |validateFunc isValid|}}
-
       {{lf-input
         name="email"
-        label="E-mail"
+        label="*E-mail"
         property=model.email
-        disabled=true
+        on-update=(action (mut model.email))
+        validate=validateFunc
+        errors=externalErrors.email
       }}
 
       <div class="row">

@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   def update
     assign_access_level
+    @user.skip_reconfirmation!
 
     if @user.update(user_params_for_update)
       render json: @user
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
     end
 
     def user_params_for_update
-      params.require(:data).require(:attributes).permit(:username, :first_name, :last_name, :preferred_working_hours_per_day)
+      params.require(:data).require(:attributes).permit(:email, :username, :first_name, :last_name, :preferred_working_hours_per_day)
     end
 
     def password_params
