@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < Api::BaseController
   load_and_authorize_resource
 
   before_action :authenticate_user!, except: :create

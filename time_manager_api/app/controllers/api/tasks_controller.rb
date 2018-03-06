@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class Api::TasksController < Api::BaseController
   include JSONAPI::ActsAsResourceController
   include TasksControllerConcern
 

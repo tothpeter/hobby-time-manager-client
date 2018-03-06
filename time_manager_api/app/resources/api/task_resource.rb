@@ -1,4 +1,4 @@
-class TaskResource < JSONAPI::Resource
+class Api::TaskResource < JSONAPI::Resource
   attributes :title, :description, :date, :duration
 
   has_one :user, always_include_linkage_data: true

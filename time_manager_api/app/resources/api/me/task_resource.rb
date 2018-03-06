@@ -1,4 +1,4 @@
-class Me::TaskResource < TaskResource
+class Api::Me::TaskResource < Api::TaskResource
   def self.records options = {}
     params = options[:context][:params]
     scope = options[:context][:current_user].tasks
@@ -16,7 +16,7 @@ class Me::TaskResource < TaskResource
 
   def self.resource_for type
     if type.downcase.include? 'user'
-      UserResource
+      Api::UserResource
     else
       super type
     end
