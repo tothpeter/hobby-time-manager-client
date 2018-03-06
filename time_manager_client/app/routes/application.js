@@ -11,8 +11,12 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   sessionAuthenticated() {
-    this._super(...arguments);
-    this._loadCurrentUser();
+    let parentMethod = this._super.bind(this),
+        originalArguments = arguments;
+
+    this._loadCurrentUser().then(() => {
+      parentMethod(...originalArguments);
+    });
   },
 
   _loadCurrentUser() {
