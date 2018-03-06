@@ -89,6 +89,62 @@ describe '/users' do
     end
   end
 
+  describe "PATCH #password" do
+    context "when current user is an employee" do
+      context "when he updates his own password" do
+        it "updates the password" do
+          request_arguments = {
+            headers: auth_headers,
+            params: {
+              password: 123123
+            }
+          }
+
+          patch "/users/#{current_user.id}/password", request_arguments
+
+          expect(response).to have_http_status(204)
+        end
+      end
+
+      context "when he updates his the password of someone else" do
+        it "updates the password" do
+          other_user = FactoryBot.create :user
+
+          request_arguments = {
+            headers: auth_headers,
+            params: {
+              password: 123123
+            }
+          }
+
+          patch "/users/#{other_user.id}/password", request_arguments
+
+          expect(response).to have_http_status(403)
+        end
+      end
+    end
+
+    context "when current user is a manager" do
+      context "when he updates his the password of someone else" do
+        it "updates the password" do
+          other_user = FactoryBot.create :user
+          current_user.manager!
+
+          request_arguments = {
+            headers: auth_headers,
+            params: {
+              password: 123123
+            }
+          }
+
+          patch "/users/#{other_user.id}/password", request_arguments
+
+          expect(response).to have_http_status(204)
+        end
+      end
+    end
+  end
+
   def request_payload_for_user user
     {
       data: {

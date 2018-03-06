@@ -2,12 +2,12 @@ class Api::TasksController < Api::BaseController
   include JSONAPI::ActsAsResourceController
   include TasksControllerConcern
 
-  load_and_authorize_resource
-
   before_action :authenticate_user!
   before_action :authorise_user!
   before_action :validate_date_filter, only: [:index, :export]
   before_action :validate_user_filter, only: [:index, :export]
+
+  load_and_authorize_resource
 
   def export
     user = User.find(params[:user_id])
