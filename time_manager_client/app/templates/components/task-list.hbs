@@ -1,4 +1,4 @@
-<table class="table table-task-list">
+<table class="table table-task-list" onclick={{action 'navigateToTaskShow'}}>
   <thead>
     <tr>
       <th class="col-actions"></th>
@@ -15,7 +15,7 @@
         </td>
       </tr>
       {{#each group.tasks as |task|}}
-        <tr class="task-item {{if group.underPreferredWorkingHours 'under-preferred-working-hours'}}">
+        <tr class="task-item {{if group.underPreferredWorkingHours 'under-preferred-working-hours'}}" data-task-id="{{task.id}}" data-user-id="{{task.user.id}}">
           <th>
             {{#if me}}
               {{#link-to "dashboard.me.tasks.task.edit" task.id class="btn"}}

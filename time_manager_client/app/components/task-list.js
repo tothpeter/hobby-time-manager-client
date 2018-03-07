@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   classNames: ['task-list'],
   currentUser: service(),
+  router: service(),
   me: true,
 
   groups: computed('tasks.[]', function() {
@@ -41,6 +42,27 @@ export default Component.extend({
     deleteTask(task) {
       if (window.confirm('Are you sure, you want to delete this task?')) {
         task.destroyRecord(this._adapterParams());
+      }
+    },
+
+    navigateToTaskShow(event) {
+      let target = $(event.target);
+
+      if (target.parents('th').length) {
+        return;
+      }
+
+      let taskRow = target.parents('.task-item');
+
+      if (taskRow.length) {
+        let userId = taskRow.data('user-id'),
+            taskId = taskRow.data('task-id');
+
+        if (this.get('me')) {
+          this.get('router').transitionTo('dashboard.me.tasks.task', taskId);
+        } else {
+          this.get('router').transitionTo('dashboard.users.user.tasks.task', userId, taskId);
+        }
       }
     }
   },

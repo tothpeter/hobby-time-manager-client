@@ -25,6 +25,7 @@
   .task-item {
     td {
       color: green;
+      cursor: pointer;
     }
 
     &.under-preferred-working-hours {

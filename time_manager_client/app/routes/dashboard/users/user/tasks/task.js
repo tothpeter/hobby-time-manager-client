@@ -7,8 +7,7 @@ export default Route.extend({
     const title = model.get('title');
 
     const breadCrumb = {
-      title: title,
-      linkable: false
+      title: title
     };
 
     this.set('breadCrumb', breadCrumb);

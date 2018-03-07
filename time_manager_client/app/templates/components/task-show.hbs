@@ -1,0 +1,15 @@
+<h2>{{model.title}}</h2>
+<h3>{{moment-format model.date}} - {{format-working-hours model.duration}}</h3>
+<p>{{nl2br model.description}}</p>
+<p>
+  {{#if me}}
+    {{#link-to "dashboard.me.tasks.task.edit" model.id class="btn btn-primary"}}
+      Edit
+    {{/link-to}}
+  {{else}}
+    {{#link-to "dashboard.users.user.tasks.task.edit" model.user.id model.id class="btn btn-primary"}}
+      Edit
+    {{/link-to}}
+  {{/if}}
+  <button class="btn btn-danger" {{action 'deleteTask'}}>Delete</button>
+</p>
