@@ -1,21 +1,13 @@
 class Api::UsersController < Api::BaseController
+  include JSONAPI::ActsAsResourceController
+
   before_action :authenticate_user!, except: :create
-  before_action :set_user, only: [ :show, :update, :destroy, :password ]
+  before_action :set_user, only: [ :update, :password ]
 
   load_and_authorize_resource
 
   def me
     render json: current_user
-  end
-
-  def index
-    @users = User.where.not id: current_user
-
-    render json: @users
-  end
-
-  def show
-    render json: @user
   end
 
   def create
@@ -47,10 +39,6 @@ class Api::UsersController < Api::BaseController
     else
       respond_with_errors @user
     end
-  end
-
-  def destroy
-    @user.destroy
   end
 
   private

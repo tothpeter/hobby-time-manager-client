@@ -1,8 +1,40 @@
-{{#link-to "dashboard.users.new" class="btn btn-primary"}}
-  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New user
-{{/link-to}}
-<br>
-<br>
+<div class="form-group">
+  {{#link-to "dashboard.users.new" class="btn btn-primary"}}
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New user
+  {{/link-to}}
+
+  <button class="btn btn-default pull-right" {{action 'toggleFilters'}}>
+    <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filters
+  </button>
+</div>
+
+
+{{#if displayFilters}}
+  <strong>Filters</strong>
+
+  <form onSubmit={{action 'filter'}}>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          {{input value=filters.email class="form-control" placeholder="E-mail"}}
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          {{input value=filters.username class="form-control" placeholder="Username"}}
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <button class="btn btn-default" {{action 'filter'}}>Filter</button>
+          <button class="btn btn-default" {{action 'resetFilters'}}>Reset</button>
+        </div>
+      </div>
+    </div>
+  </form>
+{{/if}}
 
 <div class="panel panel-default">
   <table class="table">
