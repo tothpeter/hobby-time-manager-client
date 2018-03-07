@@ -7,7 +7,7 @@ class Api::SessionsController < Devise::SessionsController
 
   def destroy
     Tiddle.expire_token(current_user, request) if current_user
-    render json: {}
+    head 204
   end
 
   private
