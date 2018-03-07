@@ -8,7 +8,6 @@ const {
 
 
 export function nl2br([text]) {
-  console.log(text);
   var breakTag = '<br />';
   return new htmlSafe(`${escapeExpression(text)}`.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2'));
 }
