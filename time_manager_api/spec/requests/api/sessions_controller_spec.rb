@@ -1,8 +1,4 @@
-describe Api::SessionsController, type: :controller do
-  before do
-    @request.env['devise.mapping'] = Devise.mappings[:user]
-  end
-
+describe "/sessions" do
   describe 'POST #create' do
     context 'when the credentials are valid' do
       it 'returns the expected json' do
@@ -10,7 +6,11 @@ describe Api::SessionsController, type: :controller do
 
         expect(Tiddle).to receive(:create_and_return_token).and_return('magic_token')
 
-        post :create, params: { user: { email: user.email, password: user.password } }
+        request_arguments = {
+          params: { user: { email: user.email, password: user.password } }
+        }
+
+        post '/sessions', request_arguments
 
         expect(json_response[:email]).to eq(user.email)
         expect(json_response[:token]).to eq('magic_token')
@@ -20,7 +20,11 @@ describe Api::SessionsController, type: :controller do
 
     context 'when the credentials are invalid' do
       it 'returns 401' do
-        post :create, params: { user: { email: '', password: '' } }
+        request_arguments = {
+          params: { user: { email: '', password: '' } }
+        }
+
+        post '/sessions', request_arguments
 
         expect(response.status).to eq(401)
       end
@@ -29,13 +33,13 @@ describe Api::SessionsController, type: :controller do
 
   describe 'DELETE #destroy' do
     it 'removes the session token' do
-      current_user = FactoryBot.create(:user)
-
-      authenticate_request current_user
+      request_arguments = {
+        headers: auth_headers
+      }
 
       expect(current_user.authentication_tokens.count).to eq(1)
 
-      delete :destroy
+      delete '/sessions', request_arguments
 
       expect(current_user.authentication_tokens.count).to eq(0)
 
