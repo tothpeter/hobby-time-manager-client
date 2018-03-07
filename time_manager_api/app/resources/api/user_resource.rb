@@ -13,7 +13,7 @@ class Api::UserResource < JSONAPI::Resource
     verify: ->(values, context) {
       username = values[0].strip.downcase
 
-      raise JSONAPI::Exceptions::InvalidFilterValue.new(:username, values[0]) if username.length <= 2
+      raise JSONAPI::Exceptions::InvalidFilterValue.new(:username, values[0]) if username.length < 3
 
       username
     },
@@ -25,7 +25,7 @@ class Api::UserResource < JSONAPI::Resource
     verify: ->(values, context) {
       email = values[0].strip.downcase
 
-      raise JSONAPI::Exceptions::InvalidFilterValue.new(:email, values[0]) if email.length <= 4
+      raise JSONAPI::Exceptions::InvalidFilterValue.new(:email, values[0]) if email.length < 3
 
       email
     },
