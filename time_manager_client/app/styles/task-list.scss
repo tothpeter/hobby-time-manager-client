@@ -1,11 +1,36 @@
-.task-list {
-  li {
-    color: green;
+.table-task-list {
+  .col-actions {
+    width: 110px;
   }
 
-  .under-preferred-working-hours {
-    li {
-      color: red;
+  .col-description {
+    width: 60%;
+  }
+
+  .col-duration {
+    width: 74px;
+  }
+
+  .group-head {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    background-color: #f6f6f6;
+  }
+
+  .description-wrapper {
+    max-width: 650px;
+  }
+
+  .task-item {
+    td {
+      color: green;
+    }
+
+    &.under-preferred-working-hours {
+      td {
+        color: red;
+      }
     }
   }
 }

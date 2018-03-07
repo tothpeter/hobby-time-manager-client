@@ -54,5 +54,8 @@
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
+  },
+  "dependencies": {
+    "ember-truncate": "^1.0.0"
   }
 }
