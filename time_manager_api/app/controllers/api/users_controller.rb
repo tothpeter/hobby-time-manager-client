@@ -12,10 +12,10 @@ class Api::UsersController < Api::BaseController
 
   def create
     @user = User.new(user_params)
+    @user.skip_confirmation!
     assign_access_level
 
     if @user.save
-      @user.confirm
       render json: @user, status: :created
     else
       respond_with_errors @user
