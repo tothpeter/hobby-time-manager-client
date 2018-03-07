@@ -38,7 +38,7 @@ export default Controller.extend({
     availableFilters.forEach(function(filterName) {
       let filterValue = _this.get(`filters.${filterName}`);
 
-      if (filterValue) {
+      if (filterValue != null) {
         filterValue = filterValue.trim();
 
         if (filterValue.length === 0) {
