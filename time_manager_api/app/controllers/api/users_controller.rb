@@ -4,7 +4,7 @@ class Api::UsersController < Api::BaseController
   before_action :authenticate_user!, except: :create
   before_action :set_user, only: [ :update, :password ]
 
-  load_and_authorize_resource
+  authorize_resource
 
   def me
     render json: current_user

@@ -7,7 +7,7 @@ class Api::TasksController < Api::BaseController
   before_action :validate_date_filter, only: [:index, :export]
   before_action :validate_user_filter, only: [:index, :export]
 
-  load_and_authorize_resource
+  authorize_resource
 
   def export
     user = User.find(params[:user_id])
