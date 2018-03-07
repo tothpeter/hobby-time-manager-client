@@ -14,12 +14,21 @@ Rails.application.routes.draw do
       get :me, on: :collection
       patch :password, on: :member
     end
+
+    devise_scope :user do
+      resources :sessions, :only => [:create] do
+        collection do
+          delete :destroy
+        end
+      end
+    end
   end
 
-  devise_for :users, controllers: {
-    sessions: 'api/users/sessions',
-    registrations: 'users'
-  }
+  devise_for :users,
+    controllers: {
+      registrations: 'users'
+    },
+    skip: [:sessions]
 
   namespace :development do
     get 'tasks_export'

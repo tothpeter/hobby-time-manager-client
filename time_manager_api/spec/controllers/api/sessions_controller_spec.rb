@@ -1,4 +1,4 @@
-describe Api::Users::SessionsController, type: :controller do
+describe Api::SessionsController, type: :controller do
   describe 'POST #create' do
     context 'when the credentials are valid' do
       it 'returns the expected json' do

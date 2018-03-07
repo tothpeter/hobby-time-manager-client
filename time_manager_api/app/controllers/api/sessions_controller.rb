@@ -1,5 +1,4 @@
-class Api::Users::SessionsController < Devise::SessionsController
-
+class Api::SessionsController < Devise::SessionsController
   def create
     user = warden.authenticate!(auth_options)
     token = Tiddle.create_and_return_token(user, request)
