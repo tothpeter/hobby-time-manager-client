@@ -28,7 +28,7 @@
           <li>
             <h4><%= task.title %> - <%= format_time task.duration %></h4>
             <% if task.description %>
-              <p><%= task.description %></p>
+              <p><%= task.description.gsub(/\n/, '<br />') %></p>
             <% end %>
           </li>
         <% end %>
