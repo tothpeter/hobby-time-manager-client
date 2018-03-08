@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     controllers: {
       registrations: 'users'
     },
-    skip: [:sessions]
+    skip: [:sessions, :passwords, :confirmations, :registrations]
 
   namespace :development do
     get 'tasks_export'
