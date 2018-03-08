@@ -8,7 +8,11 @@ export default Route.extend(UnauthenticatedRouteMixin, {
 
   actions: {
     willTransition: function() {
-      this.get('controller.model').unloadRecord();
+      let model = this.get('controller.model');
+
+      if (model.get('isNew')) {
+        model.unloadRecord();
+      }
     }
   }
 });
