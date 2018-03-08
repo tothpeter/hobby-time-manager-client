@@ -12,6 +12,8 @@ class Api::Me::TaskResource < Api::TaskResource
 
   before_save do
     @model.user_id = context[:current_user].id
+    @model.description = ActionView::Base.full_sanitizer.sanitize(@model.description)
+    @model.title = ActionView::Base.full_sanitizer.sanitize(@model.title)
   end
 
   def self.resource_for type

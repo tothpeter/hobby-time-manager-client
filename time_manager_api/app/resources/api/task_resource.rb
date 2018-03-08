@@ -15,6 +15,11 @@ class Api::TaskResource < JSONAPI::Resource
     end
   end
 
+  before_save do
+    @model.description = ActionView::Base.full_sanitizer.sanitize(@model.description)
+    @model.title = ActionView::Base.full_sanitizer.sanitize(@model.title)
+  end
+
   def self.default_sort
     [
       { field: 'date', direction: :asc },
