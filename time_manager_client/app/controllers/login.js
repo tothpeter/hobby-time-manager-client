@@ -15,7 +15,7 @@ export default Controller.extend({
           () => {
             this.get('notifications').success('Logged in');
           },
-          () => {
+          (response) => {
             this.get('notifications').error(response.error);
           }
         );
