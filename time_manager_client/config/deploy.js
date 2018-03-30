@@ -7,6 +7,13 @@ module.exports = function(deployTarget) {
     // include other plugin configuration that applies to all deploy targets here
   };
 
+  ENV['s3'] = {
+    accessKeyId: process.env.HOBBY_TIME_NAMAGER_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.HOBBY_TIME_NAMAGER_AWS_SECRET_ACCESS_KEY,
+    bucket: 'hobby-time-namager',
+    region: 'us-west-2'
+  };
+
   if (deployTarget === 'development') {
     ENV.build.environment = 'development';
     // configure other plugins for development deploy target here
