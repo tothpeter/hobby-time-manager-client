@@ -30,6 +30,7 @@
     "ember-cli-deploy": "^1.0.2",
     "ember-cli-deploy-build": "^1.1.1",
     "ember-cli-deploy-s3": "^1.2.0",
+    "ember-cli-deploy-sql": "^1.0.1",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-file-saver": "^1.2.0",
     "ember-cli-htmlbars": "^2.0.1",
@@ -59,6 +60,7 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "dependencies": {
-    "ember-truncate": "^1.0.0"
+    "ember-truncate": "^1.0.0",
+    "pg": "^7.4.1"
   }
 }

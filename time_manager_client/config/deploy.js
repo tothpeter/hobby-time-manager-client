@@ -14,6 +14,11 @@ module.exports = function(deployTarget) {
     region: 'us-west-2'
   };
 
+  ENV.sql = {
+    client: 'postgres',
+    connection: process.env.HOBBY_TIME_NAMAGER_DATABASE_URL + '?ssl=true'
+  }
+
   if (deployTarget === 'development') {
     ENV.build.environment = 'development';
     // configure other plugins for development deploy target here
