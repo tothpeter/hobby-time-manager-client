@@ -8,15 +8,15 @@ module.exports = function(deployTarget) {
   };
 
   ENV['s3'] = {
-    accessKeyId: process.env.HOBBY_TIME_NAMAGER_AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.HOBBY_TIME_NAMAGER_AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.HOBBY_TIME_MANAGER_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.HOBBY_TIME_MANAGER_AWS_SECRET_ACCESS_KEY,
     bucket: 'hobby-time-namager',
     region: 'us-west-2'
   };
 
   ENV.sql = {
     client: 'postgres',
-    connection: process.env.HOBBY_TIME_NAMAGER_DATABASE_URL + '?ssl=true'
+    connection: process.env.HOBBY_TIME_MANAGER_DATABASE_URL + '?ssl=true'
   }
 
   if (deployTarget === 'development') {
