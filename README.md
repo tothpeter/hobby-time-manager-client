@@ -1,26 +1,51 @@
-# Time Management App
+# time-manager-client
 
-This is a hobby application. I created it to practice building single page applications.
+This README outlines the details of collaborating on this Ember application.
+A short introduction of this app could easily go here.
 
-## Tech details of the app
-- The backend is a Rails 5 API only app
-- The frontend is an Ember JS app with bootstrap and sass
-- It uses the [JSON API](http://jsonapi.org/) recommendation
+## Prerequisites
 
-## Features of the app
-- Users can create an account and log in
-- Users can add (and edit and delete) tasks they have worked on, what date, for how long
-- User can add a setting (*Preferred working hours per day*)
-- If on a particular date a user has worked under the *PreferredWorkingHourPerDay*, these tasks are red, otherwise green
-- Three roles with different permission levels:
-  - regular users are only able to CRUD on their owned records
-  - user managers are only able to CRUD users
-  - admin can do anything
-- Filter entries by date from-to
-- Export the filtered tasks in HTML:
-    - Date: 2018.03.31
-    - Total time: 9h
-    - Notes:
-        - Note1
-        - Note2
-        - Note3
+You will need the following things properly installed on your computer.
+
+* [Git](https://git-scm.com/)
+* [Node.js](https://nodejs.org/) (with npm)
+* [Ember CLI](https://ember-cli.com/)
+* [Google Chrome](https://google.com/chrome/)
+
+## Installation
+
+* `git clone <repository-url>` this repository
+* `cd time-manager-client`
+* `npm install`
+
+## Running / Development
+
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+
+### Code Generators
+
+Make use of the many generators for code, try `ember help generate` for more details
+
+### Running Tests
+
+* `ember test`
+* `ember test --server`
+
+### Building
+
+* `ember build` (development)
+* `ember build --environment production` (production)
+
+### Deploying
+
+Specify what it takes to deploy your app.
+
+## Further Reading / Useful Links
+
+* [ember.js](https://emberjs.com/)
+* [ember-cli](https://ember-cli.com/)
+* Development Browser Extensions
+  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
