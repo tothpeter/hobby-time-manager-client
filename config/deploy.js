@@ -16,12 +16,15 @@ module.exports = function(deployTarget) {
 
   ENV.sql = {
     client: 'postgres',
-    connection: process.env.HOBBY_TIME_MANAGER_DATABASE_URL + '?ssl=true'
+    connection: process.env.HOBBY_TIME_MANAGER_DATABASE_URL + '?ssl=true',
+    tableName: 'client_bootstrap'
   }
 
   if (deployTarget === 'development') {
     ENV.build.environment = 'development';
     // configure other plugins for development deploy target here
+
+    ENV.sql.connection = process.env.LOCAL_DATABASE_URL;
   }
 
   if (deployTarget === 'staging') {

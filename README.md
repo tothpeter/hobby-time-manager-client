@@ -40,7 +40,18 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+Set up env variable:
+
+HOBBY_TIME_MANAGER_DATABASE_URL
+HOBBY_TIME_MANAGER_AWS_ACCESS_KEY_ID
+HOBBY_TIME_MANAGER_AWS_SECRET_ACCESS_KEY
+
+#### To production
+`ember deploy production`
+
+#### To local for testing
+Set up env variable: `LOCAL_DATABASE_URL`
+`ember deploy development`
 
 ## Further Reading / Useful Links
 
