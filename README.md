@@ -1,7 +1,8 @@
-# time-manager-client
+# TimeManager Client
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is the frontend of my hobby project. 
+
+[The main project page](https://github.com/tothpeter/hobby-time-manager)
 
 ## Prerequisites
 
@@ -42,15 +43,18 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 Set up env variable:
 
-HOBBY_TIME_MANAGER_DATABASE_URL
-HOBBY_TIME_MANAGER_AWS_ACCESS_KEY_ID
-HOBBY_TIME_MANAGER_AWS_SECRET_ACCESS_KEY
+- HOBBY_TIME_MANAGER_DATABASE_URL
+- HOBBY_TIME_MANAGER_AWS_ACCESS_KEY_ID
+- HOBBY_TIME_MANAGER_AWS_SECRET_ACCESS_KEY
 
 #### To production
-`ember deploy production`
+- To check the available versions: `ember deploy:list prod`
+- To send a new version to production: `ember deploy production`
+- Don't forget to activate the new version `ember deploy:activate production --revision=...`
 
 #### To local for testing
 Set up env variable: `LOCAL_DATABASE_URL`
+
 `ember deploy development`
 
 ## Further Reading / Useful Links
